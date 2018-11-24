@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Local Storage</title>
+
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+  <script>
+        //sprawdzenie czy przegladarka wspiera local storage. uzywamy Jquery
+      if (localStorage) {
+          //wykonaj kod gdy dokument jest zaladowany
+          $(document).ready(function() {
+              //pobierze z lokal storage moje wczesniej wpisane imie i da go do h1
+              $("h1").text("Witaj użytkowniku " +localStorage.getItem("wpisane imie"))
+              //w momencie klikniecia przycisku zapisz
+              $("#zapisz").click(function() {
+                  //pobranie imienia z pola input i umieszczenie go w zmiennej imie
+                  var imie = $("#imie").val();
+                //  alert(imie) <- zobaczyc mozemy czy dziala wpisanie imienia
+                //zapisanie w local storage
+
+                localStorage.setItem("wpisane imie", imie);
+                alert("twoje imie jest zapisane");
+
+
+              });
+
+                $("#pobierz").click(function() {
+                    //pobieram dane
+                    alert("Witaj " + localStorage.getItem("wpisane imie"));
+// Jezeli wszystkie localStorage zamienimy na sesionStorage to zmieni na zapis sesyjny. Po wył przegladarki sie wyczysci
+                });
+
+          });
+
+      } else {
+          alert("Twoja przegladarka nie wspiera local storage")
+      }
+
+  </script>
+
+
+</head>
+
+<body>
+    <h1></h1>
+
+    <form>
+        <label for="imie">Imię: </label>
+        <input type="text" name="imie" id="imie">
+        <button id="zapisz">Zapisz imie</button>
+        <button id="pobierz">Wyswietl imie</button>
+    </form>
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Moje miejsce</title>
+    <script>
+        function pokaz(){
+           // alert("jestem");
+
+            if(navigator.geolocation) {
+
+                navigator.geolocation.getCurrentPosition(function(pozycja){
+                    var wiadomosc = "Twoja obecja pozycja: " + pozycja.coords.latitude + " szerokosci i " + pozycja.coords.longitude + " długości";
+                    document.getElementById("mojeMiejsce").innerHTML = wiadomosc;
+
+                });
+
+            } else {
+                alert("Niestety twoja przegladarka nie wspiera geolokalicazji");
+            }
+
+        }
+    
+    </script>
+
+</head>
+<body>
+    <!-- tutaj wstrzykne koordynaty mojego miejsca-->
+    <div id="mojeMiejsce"></div>
+
+    <button onclick="pokaz();">Pokaż moje współrzędne</button>
+
+</body>
+</html>
